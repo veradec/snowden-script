@@ -5,7 +5,7 @@ import "core:strconv"
 import "core:os"
 
 
-add :: proc(tokens:..string){
+add :: proc(tokens:..string) -> int {
     res :int
     loop :for token in tokens {
 	temp,ok := strconv.parse_int(token)
@@ -15,10 +15,10 @@ add :: proc(tokens:..string){
 	}
     }
 
-    fmt.println(res)
+    return res
 }
 
-mult :: proc(tokens:..string){
+mult :: proc(tokens:..string) -> int{
     res :int = 1
     loop :for token in tokens {
 	temp,ok := strconv.parse_int(token)
@@ -28,9 +28,9 @@ mult :: proc(tokens:..string){
 	}
     }
 
-    fmt.println(res)
+    return res
 }
-div :: proc(tokens:..string){
+div :: proc(tokens:..string) -> int{
     res :int = 1
     loop :for token in tokens {
 	temp,ok := strconv.parse_int(token)
@@ -40,7 +40,7 @@ div :: proc(tokens:..string){
 	}
     }
 
-    fmt.println(res)
+    return res
 }
 
 exp_res :: proc(x: int, y: int) -> int {
@@ -52,7 +52,7 @@ exp_res :: proc(x: int, y: int) -> int {
     return res
 }
 
-exp :: proc(tokens:..string){
+exp :: proc(tokens:..string) -> int {
     if(len(tokens) > 2){
 	fmt.println("more than 2 args")
 	os.exit(1)
@@ -67,6 +67,7 @@ exp :: proc(tokens:..string){
     if(ok == false){
 	fmt.println("You fucked up")
     }
-    fmt.println(exp_res(x,y))
+    return (exp_res(x,y))
+
 }
 

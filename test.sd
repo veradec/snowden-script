@@ -1,6 +1,6 @@
-print Hello World + 2
+print Hello World
 x = add 1 2 3 4 5
 y = mult 1 2 3 4 5
-z = exp 23
+z = exp 2 3
 print $x $y $z
 // x

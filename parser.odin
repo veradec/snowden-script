@@ -8,10 +8,11 @@ import "core:math"
 
 // keywords :: []string{"print", "add", "subtract", "for", "while"}
 
-find_keywords :: proc(line: string) {
+find_keywords :: proc(line: string) -> int {
     
     tokens := strings.split(line, " ")
     idx:int
+    res:int = -1
     loop : for token,idx in tokens {
 	if(idx == 0){
 	    switch token {
@@ -20,20 +21,20 @@ find_keywords :: proc(line: string) {
 		break loop
 
 	    case "add" :
-		add(..tokens[1:])
+		res =  add(..tokens[1:])
 		break loop
 	    case "exp" :
-		exp(..tokens[1:])
+		res = exp(..tokens[1:])
 		break loop
 	    case "mult":
-		mult(..tokens[1:])
+		res = mult(..tokens[1:])
 	    case "div":
-		div(..tokens[1:])
+		res = div(..tokens[1:])
 	    case "//" :
 		break loop
 		case:
 		if(len(tokens) > 1 && tokens[idx+1] == "="){
-		    set_variable(token, ..tokens[1:])
+		    set_variable(token, ..tokens[2:])
 		} else {
 		    fmt.println("UNKOWN STATEMENT FOUND")
 		}
@@ -42,6 +43,7 @@ find_keywords :: proc(line: string) {
 
 	} 
     }
+	    return res
 }
 
 split_by_line :: proc(file: string) {
