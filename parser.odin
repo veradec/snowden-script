@@ -32,19 +32,17 @@ find_keywords :: proc(line: string) {
 	    case "//" :
 		break loop
 		case:
-		fmt.println("UNKOWN CHARACTER")
+		if(len(tokens) > 1 && tokens[idx+1] == "="){
+		    set_variable(token, ..tokens[1:])
+		} else {
+		    fmt.println("UNKOWN STATEMENT FOUND")
+		}
 	    }
-	    
-	     
+	    	     
 
 	} 
     }
 }
-
-// split_by_bracket :: proc (keyword:string, tokens:..string){
-//     fmt.printf("Keyword -> %s",keyword)
-//     fmt.println(tokens)
-// }
 
 split_by_line :: proc(file: string) {
     lines := strings.split(file, "\n")
