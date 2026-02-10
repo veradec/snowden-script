@@ -66,6 +66,7 @@ main :: proc(){
     }
     defer delete(f,context.allocator)
     it := string(f)
-    split_by_line(it)
-
+    // split_by_line(it)
+    write_var("a", 12)
+    fmt.println(read_var("a"))
 }
