@@ -50,9 +50,8 @@ split_by_line :: proc(file: string) {
     lines := strings.split(file, "\n")
     idx: int
     for line, idx in lines {
-	fmt.printf("line -> %d -> %s\n", idx, line)
+	// fmt.printf("line -> %d -> %s\n", idx, line)
 	find_keywords(line)
-	fmt.println()
     }
 
 }
@@ -65,8 +64,7 @@ main :: proc(){
 	os.exit(1)
     }
     defer delete(f,context.allocator)
-    it := string(f)
-    // split_by_line(it)
-    write_var("a", 12)
-    fmt.println(read_var("a"))
+    string_file := string(f)
+    split_by_line(string_file)
+
 }
